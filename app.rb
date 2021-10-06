@@ -29,4 +29,7 @@ end
     end
   end
 end
-@rows.each {|i| p i}
+@rows.each_with_index do |row, i| 
+  (deepth -i).times {print'   '}
+  p row
+end
