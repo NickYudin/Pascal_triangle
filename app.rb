@@ -6,26 +6,27 @@ deepth = 3 #gets.chomp
 p 'Basic number is:'
 basic = 1 #gets.chomp
 
-rows = []
+@rows = []
 deepth.times do |row|
   row = []
-  rows << row
+  @rows << row
 end
 
-rows[0][0] = [basic]
+@rows[0][0] = [basic]
 
-def fill
-
+def fill (row, pos)
+  @rows[row][pos] =  @rows[row - 1][pos - 1] + @rows[row - 1][pos] 
 end
 
-rows[1..deepth].each_with_index do|item, i| 
+@rows[1..deepth].each_with_index do|item, i| 
   (i+2).times {item << []}
   item.first << basic
   item.last << basic
-  item.each do |num| 
+  item.each_with_index do |num, index| 
     if num.empty?
-      fill
+      value = i + 1
+      fill(value, index)
     end
   end
 end
-p rows
+p @rows
