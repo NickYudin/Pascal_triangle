@@ -2,9 +2,9 @@ require 'pry'
 
 
 p 'Enter deepth:'
-deepth = 3 #gets.chomp
+deepth = gets.to_i
 p 'Basic number is:'
-basic = 1 #gets.chomp
+basic = gets.to_i
 
 @rows = []
 deepth.times do |row|
@@ -15,7 +15,7 @@ end
 @rows[0][0] = [basic]
 
 def fill (row, pos)
-  @rows[row][pos] =  @rows[row - 1][pos - 1] + @rows[row - 1][pos] 
+  @rows[row][pos] =  [@rows[row - 1][pos - 1][0] + @rows[row - 1][pos][0]] 
 end
 
 @rows[1..deepth].each_with_index do|item, i| 
@@ -29,4 +29,4 @@ end
     end
   end
 end
-p @rows
+@rows.each {|i| p i}
